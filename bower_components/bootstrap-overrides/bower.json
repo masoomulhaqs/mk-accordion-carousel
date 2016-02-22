@@ -1,0 +1,25 @@
+{
+  "name": "bootstrap-overrides",
+  "version": "1.0.0",
+  "homepage": "https://github.com/masoomulhaqs/bootstrap-overrides",
+  "authors": [
+    "Masoom Ulhaq S"
+  ],
+  "description": "a simple css which overrides bootsrap styles to help improve your css",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    ".sass-cache",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "scss",
+    "config.rb"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}

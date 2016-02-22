@@ -1,0 +1,24 @@
+{
+  "name": "mk-accordion-carousel",
+  "version": "1.0.0",
+  "homepage": "https://github.com/masoomulhaqs/mk-accordion-carousel",
+  "authors": [
+    "Masoom <shaik.masoom@edgenetworks.in>"
+  ],
+  "description": "an accordion carousel",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.0",
+    "bootstrap-overrides": "1.0.1"
+  }
+}

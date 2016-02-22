@@ -1,0 +1,94 @@
+.panel-box,
+.panel-box .panel-heading,
+.panel-box .panel-body,
+.panel-box .panel-footer {
+  border-radius: 0;
+}
+
+.mk-accordion-carousel {
+  position: relative;
+  /*overflow: hidden;*/
+  /*height: 370px;*/
+  background-color: #fff;
+}
+.mk-accordion-carousel .btn-carousel {
+  position: absolute;
+  right: 10px;
+  top: 65px;
+  border-radius: 50%;
+  line-height: 1;
+  background: #EF5350;
+  color: #fff;
+  border: 0 solid #EF5350;
+  padding: 9px;
+  font-size: 0.7em;
+  box-shadow: 0 3px 4px #ccc;
+}
+.mk-accordion-carousel .item {
+  /*position: relative;*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.mk-accordion-carousel .item.item1 .panel {
+  border-color: #6D5CAE;
+}
+.mk-accordion-carousel .item.item1 .panel-heading,
+.mk-accordion-carousel .item.item1 .panel-footer,
+.mk-accordion-carousel .item.item1 .btn-carousel {
+  background: #6D5CAE;
+}
+.mk-accordion-carousel .item.item2 .panel {
+  border-color: #10CFBD;
+}
+.mk-accordion-carousel .item.item2 .panel-heading,
+.mk-accordion-carousel .item.item2 .panel-footer,
+.mk-accordion-carousel .item.item2 .btn-carousel {
+  background: #10CFBD;
+}
+.mk-accordion-carousel .item.item3 .panel {
+  border-color: #f55753;
+}
+.mk-accordion-carousel .item.item3 .panel-heading,
+.mk-accordion-carousel .item.item3 .panel-footer,
+.mk-accordion-carousel .item.item3 .btn-carousel {
+  background: #f55753;
+}
+.mk-accordion-carousel .item.item4 .panel {
+  border-color: #f8d053;
+}
+.mk-accordion-carousel .item.item4 .panel-heading,
+.mk-accordion-carousel .item.item4 .panel-footer,
+.mk-accordion-carousel .item.item4 .btn-carousel {
+  background: #f8d053;
+}
+.mk-accordion-carousel .item.item5 .panel {
+  border-color: #48B0F7;
+}
+.mk-accordion-carousel .item.item5 .panel-heading,
+.mk-accordion-carousel .item.item5 .panel-footer,
+.mk-accordion-carousel .item.item5 .btn-carousel {
+  background: #48B0F7;
+}
+.mk-accordion-carousel .panel {
+  box-shadow: 0 1px 8px rgba(51, 51, 51, 0.39);
+  margin-bottom: 0;
+}
+.mk-accordion-carousel .panel-heading {
+  border-color: rgba(0, 0, 0, 0.25);
+  border-width: 5px;
+}
+.mk-accordion-carousel .panel-heading, .mk-accordion-carousel .panel-heading small {
+  color: #fff;
+}
+.mk-accordion-carousel .panel-heading h3 {
+  line-height: 1;
+}
+
+.overflow-170 {
+  height: 170px;
+  overflow: auto;
+}

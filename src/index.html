@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-ng-app="testApp">
+<head>
+	<title>MK ACCORDION CAROUSEL</title>
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../bower_components/bootstrap-overrides/css/bootstrap-overrides.css">
+	<link rel="stylesheet" href="css/mk-accordion-carousel.css">
+	<style>
+		body{
+			background: #333;
+		}
+	</style>
+</head>
+<body data-ng-controller="TestCtrl">
+	<div class="container">
+		<div class="mk-accordion-carousel">
+			<div class="item" mk-item
+				data-ng-repeat="item in dummyArray track by $index"
+				data-ng-click="reorderCarousel($event)">
+				<div class="panel panel-primary default-panel panel-box">
+        			<div class="panel-heading">
+        				<h3 class="text-uppercase no-margin clearfix">I am the Title <small class="pull-right">(3 - 10 years)</small></h3>
+        			</div>
+        			<div class="panel-body">
+        				<a class="btn btn-carousel"><i class="glyphicon glyphicon-pencil inherit"></i></a>
+        				<div class="overflow-170">
+        					{{item}}
+        				</div>
+        			</div>
+        		</div>
+			</div>
+		</div>
+	</div>
+	<script src="../bower_components/angular/angular.min.js"></script>
+	<script src="js/mk-accordion-carousel.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
