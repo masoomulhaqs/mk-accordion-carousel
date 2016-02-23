@@ -7,7 +7,7 @@ An Accordion Carousel
 ```
 
 #### HTML markup
-1. Add `mk-item` directive and pass the repeat array to it.
+1. Add `mk-item` directive and pass the repeat array.
 2. Add `data-ng-click="reorderAccordion($event, item);"` to the repeat element .
 ```html
 	<div class="mk-accordion-carousel">
