@@ -50,9 +50,11 @@ mkACApp.controller('mkACCtrl', function($scope, mkAC){
     mkAC.orderAccordion(element);
   }
   $scope.reorderAccordion = function($event, item){
-    mkAC.currentItem = item;
-    mkAC.currentTarget = $event.currentTarget;
-    mkAC.reorderAccordion($event);
+    if(mkAC.currentItem != item){
+      mkAC.currentItem = item;
+      mkAC.currentTarget = $event.currentTarget;
+      mkAC.reorderAccordion($event);
+    }
   }
 });
 
