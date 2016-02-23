@@ -32,6 +32,7 @@
   right: 0;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 .mk-accordion-carousel .item.item1 .panel {
   border-color: #6D5CAE;
@@ -77,14 +78,18 @@
   box-shadow: 0 1px 8px rgba(51, 51, 51, 0.39);
   margin-bottom: 0;
 }
-.mk-accordion-carousel .panel-heading {
+.mk-accordion-carousel .panel-heading,
+.mk-accordion-carousel .panel-footer {
   border-color: rgba(0, 0, 0, 0.25);
   border-width: 5px;
 }
-.mk-accordion-carousel .panel-heading, .mk-accordion-carousel .panel-heading small {
+.mk-accordion-carousel .panel-heading, .mk-accordion-carousel .panel-heading small,
+.mk-accordion-carousel .panel-footer,
+.mk-accordion-carousel .panel-footer small {
   color: #fff;
 }
-.mk-accordion-carousel .panel-heading h3 {
+.mk-accordion-carousel .panel-heading h3,
+.mk-accordion-carousel .panel-footer h3 {
   line-height: 1;
 }
 

@@ -14,18 +14,21 @@
 <body data-ng-controller="TestCtrl">
 	<div class="container">
 		<div class="mk-accordion-carousel">
-			<div class="item" mk-item
+			<div class="item" mk-item mk-items="dummyArray"
 				data-ng-repeat="item in dummyArray track by $index"
-				data-ng-click="reorderCarousel($event)">
+				data-ng-click="reorderCarousel($event, item, dummyArray)">
 				<div class="panel panel-primary default-panel panel-box">
         			<div class="panel-heading">
-        				<h3 class="text-uppercase no-margin clearfix">I am the Title <small class="pull-right">(3 - 10 years)</small></h3>
+        				<h3 class="text-uppercase no-margin clearfix">I am the Title {{item[0]}}<small class="pull-right">(3 - 10 years)</small></h3>
         			</div>
         			<div class="panel-body">
         				<a class="btn btn-carousel"><i class="glyphicon glyphicon-pencil inherit"></i></a>
         				<div class="overflow-170">
         					{{item}}
         				</div>
+        			</div>
+        			<div class="panel-footer">
+        				<p>I'm a little footer</p>
         			</div>
         		</div>
 			</div>

@@ -44,6 +44,7 @@ $colors-list: #6D5CAE #10CFBD #f55753 #f8d053 #48B0F7;
 	    right: 0;
 	    -webkit-transition: all 0.3s ease;
 	    transition: all 0.3s ease;
+	    cursor: pointer;
 	    @each $current-color in $colors-list {
 		    $i: index($colors-list, $current-color);
 		    &.item#{$i} { 
@@ -55,7 +56,8 @@ $colors-list: #6D5CAE #10CFBD #f55753 #f8d053 #48B0F7;
     	box-shadow: 0 1px 8px rgba(51, 51, 51, 0.39);
     	margin-bottom: 0;
     }
-    .panel-heading{
+    .panel-heading,
+    .panel-footer{
 	    border-color: rgba(0, 0, 0, 0.25);
 	    border-width: 5px;
 		&, small{
