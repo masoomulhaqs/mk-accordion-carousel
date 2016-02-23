@@ -20,5 +20,9 @@ app.controller('TestCtrl', ['$scope' ,'mkAC' , function ($scope, mkAC) {
 		}
 		return arr;
 	};
-	$scope.dummyArray = $scope.createDummyArray($scope.dummyText, 5);
+	$scope.dummyArray = $scope.createDummyArray($scope.dummyText, 7);
+	$scope.changeItem = function(){
+		console.log(mkAC.currentItem);
+		console.log(mkAC.currentTarget);
+	}
 }]);

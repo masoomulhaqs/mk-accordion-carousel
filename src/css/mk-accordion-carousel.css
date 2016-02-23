@@ -74,6 +74,22 @@
 .mk-accordion-carousel .item.item5 .btn-carousel {
   background: #48B0F7;
 }
+.mk-accordion-carousel .item.item6 .panel {
+  border-color: #2D3446;
+}
+.mk-accordion-carousel .item.item6 .panel-heading,
+.mk-accordion-carousel .item.item6 .panel-footer,
+.mk-accordion-carousel .item.item6 .btn-carousel {
+  background: #2D3446;
+}
+.mk-accordion-carousel .item.item7 .panel {
+  border-color: #607D8B;
+}
+.mk-accordion-carousel .item.item7 .panel-heading,
+.mk-accordion-carousel .item.item7 .panel-footer,
+.mk-accordion-carousel .item.item7 .btn-carousel {
+  background: #607D8B;
+}
 .mk-accordion-carousel .panel {
   box-shadow: 0 1px 8px rgba(51, 51, 51, 0.39);
   margin-bottom: 0;

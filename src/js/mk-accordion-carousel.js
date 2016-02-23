@@ -1,87 +1,64 @@
 var mkACApp = angular.module('mkAccordionCarousel', []);
 
 mkACApp.service('mkAC', [function () {
-  this.itemsList = [];
-  this.orderCarousel = function(element){
-      console.log('### WOW ###');
-      var parentElem = element.parent(), total, offset, rightOffset, defOffset = 20;
-      total = parentElem.children().length;
-      rightOffset = defOffset*total;
-      offset=rightOffset;
+  this.currentItem = null;
+  this.currentTarget = null;
+  this.orderAccordion = function(element){
+      /*Declaring Variables*/
+      var parentElem = element.parent(), 
+          childElems = parentElem.children(),
+          total = parentElem.children().length,
+          defOffset = 20,
+          rightOffset = defOffset*total,
+          onCheckClass = 'carousel-inititalized';
+
       for(var index=0; index<total;index++){
-        parentElem.children().eq(index).css({
+        childElems.eq(index).css({
           top: rightOffset+'px',
           right: rightOffset+'px',
-          left: offset-rightOffset+'px',
+          left: defOffset*total - rightOffset+'px',
           zIndex: 100-index
         });
         rightOffset = rightOffset - defOffset;
       }
-     if(!parentElem.hasClass('unfresh-carousel')){
+
+      if(!parentElem.hasClass(onCheckClass)){
         for(var index=0; index<total;index++){
-          parentElem.children().eq(index).addClass('item'+(index+1));
+          childElems.eq(index).addClass('item'+(index+1));
         }
-        parentElem.addClass('unfresh-carousel');
-     }
+        parentElem.addClass(onCheckClass);
+      }
   } 
-  this.reorderCarousel = function($event){
+  this.reorderAccordion = function($event){
     var curr = angular.element($event.currentTarget);
     curr.parent().prepend(curr);
-    this.orderCarousel(curr);
+    this.orderAccordion(curr);
   }
 }]);
 
-mkACApp.controller('mkACCtrl', function($scope ,$interval ,mkAC){
-  // $scope.$watch(function(){
-  //   console.log(mkAC.itemsList);
-  //   return mkAC.itemsList;
-  // }, function(){
-  //   console.log("changed");
-  //   // $scope.isBlocked = mkBlocker.isBlocked;
-  // });
-  $scope.items = [];
-  console.log($scope.items);
-  $scope.checkItems = function(obj, element){
-    // mkAC.itemsList = obj;
-    $scope.items = obj;
-
-    console.log(obj.length);
-    if(obj.length>0){
-      console.log($scope.items);
-      mkAC.orderCarousel(element);
+mkACApp.controller('mkACCtrl', function($scope, mkAC){
+  $scope.initAccordion = function(obj, element){
+    if(angular.isDefined(obj) && obj.length>0){
+      mkAC.currentItem = obj[0];
+      mkAC.currentTarget = element;
+      mkAC.orderAccordion(element);
     }
   }
-  $scope.orderCarousel = function(element){
-    console.log($scope.items);
-    mkAC.orderCarousel(element);
-  }
-  $scope.reorderCarousel = function($event, item, itemsArray){
-    // mkAC.reorderCarousel($event);
-    // mkAC.itemsList.unshift(item);
-    // index = mkAC.itemsList.indexOf(item);
-    // if(index !== -1){
-    //   mkAC.itemsList.splice(index, 1);
-    //   mkAC.itemsList.unshift(item);
-    // }
-    // index = itemsArray.indexOf(item);
-    // if(index !== -1){
-    //   itemsArray.splice(index, 1);
-    //   itemsArray.unshift(item);
-    // }
-    mkAC.reorderCarousel($event);
-    // console.log(mkAC.itemsList);
+  $scope.reorderAccordion = function($event, item){
+    mkAC.currentItem = item;
+    mkAC.currentTarget = $event.currentTarget;
+    mkAC.reorderAccordion($event);
   }
 });
 
 mkACApp.directive('mkItem', [function () {
    return {
-      restrict: 'AE',
+      restrict: 'A',
       controller: 'mkACCtrl',
       link: function (scope, element, attrs) {
         if(scope.$last) {
-          var obj = scope.$eval(attrs.mkItems);
-          console.log(obj);
-          scope.checkItems(obj, element);
+          var obj = scope.$eval(attrs.mkItem);
+          scope.initAccordion(obj, element);
         }
       }
    };

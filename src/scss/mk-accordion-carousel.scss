@@ -1,4 +1,4 @@
-$colors-list: #6D5CAE #10CFBD #f55753 #f8d053 #48B0F7;
+$colors-list: #6D5CAE #10CFBD #f55753 #f8d053 #48B0F7 #2D3446 #607D8B;
 @mixin default-item($color){
 	.panel{
 		border-color: $color;
