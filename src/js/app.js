@@ -25,4 +25,8 @@ app.controller('TestCtrl', ['$scope' ,'mkAC' , function ($scope, mkAC) {
 		console.log(mkAC.currentItem);
 		console.log(mkAC.currentTarget);
 	}
+	$scope.changeItem2 = function(){
+		console.log(mkAC.currentItem);
+		console.log(mkAC.currentTarget);
+	}
 }]);

@@ -7,25 +7,24 @@
 
 .mk-accordion-carousel {
   position: relative;
-  /*overflow: hidden;*/
-  /*height: 370px;*/
+  overflow: hidden;
+  min-height: 370px;
   background-color: #fff;
 }
 .mk-accordion-carousel .btn-carousel {
   position: absolute;
   right: 10px;
-  top: 65px;
+  top: 70px;
   border-radius: 50%;
-  line-height: 1;
-  background: #EF5350;
+  line-height: 1 !important;
+  background: #ccc;
   color: #fff;
-  border: 0 solid #EF5350;
+  border: 0 solid #ccc;
   padding: 9px;
   font-size: 0.7em;
   box-shadow: 0 3px 4px #ccc;
 }
 .mk-accordion-carousel .item {
-  /*position: relative;*/
   position: absolute;
   left: 0;
   top: 0;
@@ -93,11 +92,13 @@
 .mk-accordion-carousel .panel {
   box-shadow: 0 1px 8px rgba(51, 51, 51, 0.39);
   margin-bottom: 0;
+  border: 0;
 }
 .mk-accordion-carousel .panel-heading,
 .mk-accordion-carousel .panel-footer {
   border-color: rgba(0, 0, 0, 0.25);
   border-width: 5px;
+  padding: 16px 35px;
 }
 .mk-accordion-carousel .panel-heading, .mk-accordion-carousel .panel-heading small,
 .mk-accordion-carousel .panel-footer,
@@ -107,6 +108,9 @@
 .mk-accordion-carousel .panel-heading h3,
 .mk-accordion-carousel .panel-footer h3 {
   line-height: 1;
+}
+.mk-accordion-carousel .panel-body {
+  padding: 16px 35px;
 }
 
 .overflow-170 {

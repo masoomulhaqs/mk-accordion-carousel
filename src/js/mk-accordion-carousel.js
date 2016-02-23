@@ -4,19 +4,21 @@ mkACApp.service('mkAC', [function () {
   this.currentItem = null;
   this.currentTarget = null;
   this.orderAccordion = function(element){
-      /*Declaring Variables*/
+      /**** Declaring Variables ****/
       var parentElem = element.parent(), 
           childElems = parentElem.children(),
           total = parentElem.children().length,
           defOffset = 20,
           rightOffset = defOffset*total,
-          onCheckClass = 'carousel-inititalized';
+          onCheckClass = 'carousel-inititalized',
+          parentHeight = childElems[0].offsetHeight + (defOffset*(total+1));
 
+      parentElem.css('height', parentHeight+'px');
       for(var index=0; index<total;index++){
         childElems.eq(index).css({
           top: rightOffset+'px',
           right: rightOffset+'px',
-          left: defOffset*total - rightOffset+'px',
+          left: defOffset*(total+1) - rightOffset +'px',
           zIndex: 100-index
         });
         rightOffset = rightOffset - defOffset;
@@ -43,6 +45,9 @@ mkACApp.controller('mkACCtrl', function($scope, mkAC){
       mkAC.currentTarget = element;
       mkAC.orderAccordion(element);
     }
+  }
+  $scope.orderAccordion = function(element){
+    mkAC.orderAccordion(element);
   }
   $scope.reorderAccordion = function($event, item){
     mkAC.currentItem = item;
