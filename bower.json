@@ -6,7 +6,7 @@
     "Masoom <shaik.masoom@edgenetworks.in>"
   ],
   "description": "an accordion carousel",
-  "main": "",
+  "main": "src/js/mk-accordion-carousel.js, src/css/mk-accordion-carousel.css",
   "moduleType": [],
   "license": "MIT",
   "ignore": [
@@ -14,7 +14,13 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "src/data",
+    "src/images",
+    "src/scss",
+    "src/js/app.js",
+    "src/index.html",
+    "src/config.rb"
   ],
   "dependencies": {
     "bootstrap": "^3.3.6",
