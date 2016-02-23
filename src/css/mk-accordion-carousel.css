@@ -1,0 +1,119 @@
+.panel-box,
+.panel-box .panel-heading,
+.panel-box .panel-body,
+.panel-box .panel-footer {
+  border-radius: 0;
+}
+
+.mk-accordion-carousel {
+  position: relative;
+  overflow: hidden;
+  min-height: 370px;
+  background-color: #fff;
+}
+.mk-accordion-carousel .btn-carousel {
+  position: absolute;
+  right: 10px;
+  top: 70px;
+  border-radius: 50%;
+  line-height: 1 !important;
+  background: #ccc;
+  color: #fff;
+  border: 0 solid #ccc;
+  padding: 9px;
+  font-size: 0.7em;
+  box-shadow: 0 3px 4px #ccc;
+}
+.mk-accordion-carousel .item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.mk-accordion-carousel .item.item1 .panel {
+  border-color: #6D5CAE;
+}
+.mk-accordion-carousel .item.item1 .panel-heading,
+.mk-accordion-carousel .item.item1 .panel-footer,
+.mk-accordion-carousel .item.item1 .btn-carousel {
+  background: #6D5CAE;
+}
+.mk-accordion-carousel .item.item2 .panel {
+  border-color: #10CFBD;
+}
+.mk-accordion-carousel .item.item2 .panel-heading,
+.mk-accordion-carousel .item.item2 .panel-footer,
+.mk-accordion-carousel .item.item2 .btn-carousel {
+  background: #10CFBD;
+}
+.mk-accordion-carousel .item.item3 .panel {
+  border-color: #f55753;
+}
+.mk-accordion-carousel .item.item3 .panel-heading,
+.mk-accordion-carousel .item.item3 .panel-footer,
+.mk-accordion-carousel .item.item3 .btn-carousel {
+  background: #f55753;
+}
+.mk-accordion-carousel .item.item4 .panel {
+  border-color: #f8d053;
+}
+.mk-accordion-carousel .item.item4 .panel-heading,
+.mk-accordion-carousel .item.item4 .panel-footer,
+.mk-accordion-carousel .item.item4 .btn-carousel {
+  background: #f8d053;
+}
+.mk-accordion-carousel .item.item5 .panel {
+  border-color: #48B0F7;
+}
+.mk-accordion-carousel .item.item5 .panel-heading,
+.mk-accordion-carousel .item.item5 .panel-footer,
+.mk-accordion-carousel .item.item5 .btn-carousel {
+  background: #48B0F7;
+}
+.mk-accordion-carousel .item.item6 .panel {
+  border-color: #2D3446;
+}
+.mk-accordion-carousel .item.item6 .panel-heading,
+.mk-accordion-carousel .item.item6 .panel-footer,
+.mk-accordion-carousel .item.item6 .btn-carousel {
+  background: #2D3446;
+}
+.mk-accordion-carousel .item.item7 .panel {
+  border-color: #607D8B;
+}
+.mk-accordion-carousel .item.item7 .panel-heading,
+.mk-accordion-carousel .item.item7 .panel-footer,
+.mk-accordion-carousel .item.item7 .btn-carousel {
+  background: #607D8B;
+}
+.mk-accordion-carousel .panel {
+  box-shadow: 0 1px 8px rgba(51, 51, 51, 0.39);
+  margin-bottom: 0;
+  border: 0;
+}
+.mk-accordion-carousel .panel-heading,
+.mk-accordion-carousel .panel-footer {
+  border-color: rgba(0, 0, 0, 0.25);
+  border-width: 5px;
+  padding: 16px 35px;
+}
+.mk-accordion-carousel .panel-heading, .mk-accordion-carousel .panel-heading small,
+.mk-accordion-carousel .panel-footer,
+.mk-accordion-carousel .panel-footer small {
+  color: #fff;
+}
+.mk-accordion-carousel .panel-heading h3,
+.mk-accordion-carousel .panel-footer h3 {
+  line-height: 1;
+}
+.mk-accordion-carousel .panel-body {
+  padding: 16px 35px;
+}
+
+.overflow-170 {
+  height: 170px;
+  overflow: auto;
+}
