@@ -46,9 +46,6 @@ mkACApp.controller('mkACCtrl', function($scope, mkAC){
       mkAC.orderAccordion(element);
     }
   }
-  $scope.orderAccordion = function(element){
-    mkAC.orderAccordion(element);
-  }
   $scope.reorderAccordion = function($event, item){
     if(mkAC.currentItem != item){
       mkAC.currentItem = item;
