@@ -22,11 +22,6 @@ app.controller('TestCtrl', ['$scope' ,'mkAC' , function ($scope, mkAC) {
 	};
 	$scope.dummyArray = $scope.createDummyArray($scope.dummyText, 7);
 	$scope.changeItem = function(){
-		console.log(mkAC.currentItem);
-		console.log(mkAC.currentTarget);
-	}
-	$scope.changeItem2 = function(){
-		console.log(mkAC.currentItem);
-		console.log(mkAC.currentTarget);
+		// console.log(mkAC.currentItem);
 	}
 }]);
