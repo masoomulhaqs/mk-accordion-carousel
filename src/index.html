@@ -22,27 +22,31 @@
 	<div class="container">
 		<div class="page-header text-center">
 			<h2 class="text-uppercase">MK ACCORDION CAROUSEL by <a href="http://www.masoomulhaq.in/" target="_blank">masoom</a></h2>
-			<ul class="list-inline">
-                <li><a href="https://twitter.com/smasoomulhaq" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="https://plus.google.com/u/0/+MasoomS/posts" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="http://codepen.io/masoomulhaqs/" target="_blank"><i class="fa fa-codepen"></i></a></li>
-                <li><a href="http://jsfiddle.net/user/masoomulhaqs/" target="_blank"><i class="fa fa-jsfiddle"></i></a></li>
-                <li><a href="https://github.com/masoomulhaqs" target="_blank"><i class="fa fa-github"></i></a></li>
+			<ul class="list-inline text-muted">
+                <li><a class="inherit" href="https://twitter.com/smasoomulhaq" target="_blank"><i class="inherit fa fa-twitter"></i></a></li>
+                <li><a class="inherit" href="https://plus.google.com/u/0/+MasoomS/posts" target="_blank"><i class="inherit fa fa-google-plus"></i></a></li>
+                <li><a class="inherit" href="http://codepen.io/masoomulhaqs/" target="_blank"><i class="inherit fa fa-codepen"></i></a></li>
+                <li><a class="inherit" href="http://jsfiddle.net/user/masoomulhaqs/" target="_blank"><i class="inherit fa fa-jsfiddle"></i></a></li>
+                <li><a class="inherit" href="https://github.com/masoomulhaqs" target="_blank"><i class="inherit fa fa-github"></i></a></li>
             </ul>
 		</div>
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-				<div class="mk-accordion-carousel">
-					<div class="item" mk-item="dummyArray"
+				<div mk-accordion-carousel 
+					carousel-items="dummyArray" 
+					solid-colors="false"
+					class="mk-accordion-carousel" 
+					data-ng-class="{'editable-carousel': isEditable}">
+					<div class="item" mk-item
 						data-ng-repeat="item in dummyArray"
 						data-ng-click="reorderAccordion($event, item); changeItem();">
-						<div class="panel panel-primary default-panel panel-box">
+						<div class="panel panel-box">
 		        			<div class="panel-heading">
-		        				<h3 class="text-uppercase no-margin clearfix">I am the Title {{item[0]}}<small class="pull-right">(3 - 10 years)</small></h3>
+		        				<h3 class="text-uppercase no-margin clearfix">I am the Title {{item[0]}}<small class="pull-right">(3 - 10 days)</small></h3>
 		        			</div>
 		        			<div class="panel-body">
 		        				<a class="btn btn-carousel"
-		        					data-ng-click="toggleEditableCarousel()"><i class="glyphicon glyphicon-pencil inherit"></i></a>
+		        					data-ng-click="toggleEditable()"><i class="glyphicon glyphicon-pencil inherit"></i></a>
 		        				<div class="overflow-170">
 		        					{{item}}
 		        				</div>
