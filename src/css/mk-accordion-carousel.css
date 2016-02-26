@@ -1,21 +1,21 @@
-.panel-box,
-.panel-box .panel-heading,
-.panel-box .panel-body,
-.panel-box .panel-footer {
-  border-radius: 0;
-}
-
 .mk-accordion-carousel {
   position: relative;
   overflow: hidden;
   min-height: 370px;
   background-color: #fff;
 }
-.mk-accordion-carousel .btn-carousel {
+.mk-accordion-carousel.editable-carousel:after {
+  content: "";
   position: absolute;
-  right: 10px;
-  top: 70px;
-  border-radius: 50%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99;
+  background: inherit;
+  opacity: 0.4;
+}
+.mk-accordion-carousel .btn-carousel {
   line-height: 1 !important;
   background: #ccc;
   color: #fff;
@@ -90,9 +90,18 @@
   background: #607D8B;
 }
 .mk-accordion-carousel .panel {
+  border-color: #696969;
+}
+.mk-accordion-carousel .panel-heading,
+.mk-accordion-carousel .panel-footer,
+.mk-accordion-carousel .btn-carousel {
+  background: #696969;
+}
+.mk-accordion-carousel .panel {
   box-shadow: 0 1px 8px rgba(51, 51, 51, 0.39);
   margin-bottom: 0;
   border: 0;
+  background: #F3F4F8;
 }
 .mk-accordion-carousel .panel-heading,
 .mk-accordion-carousel .panel-footer {
@@ -111,9 +120,4 @@
 }
 .mk-accordion-carousel .panel-body {
   padding: 16px 35px;
-}
-
-.overflow-170 {
-  height: 170px;
-  overflow: auto;
 }
