@@ -17,7 +17,6 @@ mkACApp.service('mkAC', ['$timeout', function ($timeout) {
   this.isStackable = false;
 
   this.initAccordion = function(element){
-    console.log("cool")
     /*** Setting Defaults ***/
     config.parentElem = element.parent();
     config.childElems = config.parentElem.children();
@@ -53,7 +52,7 @@ mkACApp.service('mkAC', ['$timeout', function ($timeout) {
           }).removeClass(config.itemActiveClass);
           config.varibleSidePosition = config.varibleSidePosition - config.offsetSidePosition;
         }
-        console.log(element);
+        
         element.addClass(config.itemActiveClass).css('cursor', 'default');
       }
   }
@@ -82,7 +81,7 @@ mkACApp.service('mkAC', ['$timeout', function ($timeout) {
       var curr = angular.element($event.currentTarget);
       this.reorderItems($event, item);
       // curr.parent().prepend(curr); 
-      this.orderAccordion(curr);
+      // this.orderAccordion(curr);
     }
   }
 

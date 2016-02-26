@@ -7,7 +7,7 @@ var app = angular.module('testApp', ['mkAccordionCarousel']);
 
 app.controller('TestCtrl', ['$scope', '$timeout', 'mkAC' , function ($scope, $timeout, mkAC) {
 	$scope.dummyText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid itaque voluptate, facere, sunt illum culpa consequuntur ipsa praesentium non atque quibusdam doloremque omnis nobis alias debitis temporibus id consectetur nostrum.";
-	$scope.dummyArrayTemp = [];
+
 	$scope.createDummyArray = function(text, len){
 		var arr = [], i=0;
 		while (i < len) {
