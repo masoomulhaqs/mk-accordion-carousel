@@ -5,9 +5,9 @@
 */
 var app = angular.module('testApp', ['mkAccordionCarousel']);
 
-app.controller('TestCtrl', ['$scope' ,'mkAC' , function ($scope, mkAC) {
+app.controller('TestCtrl', ['$scope', '$timeout', 'mkAC' , function ($scope, $timeout, mkAC) {
 	$scope.dummyText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid itaque voluptate, facere, sunt illum culpa consequuntur ipsa praesentium non atque quibusdam doloremque omnis nobis alias debitis temporibus id consectetur nostrum.";
-	
+	$scope.dummyArrayTemp = [];
 	$scope.createDummyArray = function(text, len){
 		var arr = [], i=0;
 		while (i < len) {
@@ -22,10 +22,10 @@ app.controller('TestCtrl', ['$scope' ,'mkAC' , function ($scope, mkAC) {
 		return arr;
 	};
 
-	$scope.dummyArray = $scope.createDummyArray($scope.dummyText, 7);
+	$scope.dummyArray = $scope.createDummyArray($scope.dummyText, 5);
 
-	$scope.changeItem = function(){
-		$scope.currItem = mkAC.carouselItems[0];
+	$scope.changeItem = function($event, item){
+		$scope.dummyArray = mkAC.reorderItems($event, item);
 	}
 	
 	$scope.toggleEditable = function(){

@@ -38,16 +38,18 @@
 					class="mk-accordion-carousel" 
 					data-ng-class="{'editable-carousel': isEditable}">
 					<div class="item" mk-item
-						data-ng-repeat="item in dummyArray"
-						data-ng-click="reorderAccordion($event, item); changeItem();">
+						ng-repeat="item in dummyArray track by item[0]"
+						data-ng-click="changeItem($event, item);">
 						<div class="panel panel-box">
 		        			<div class="panel-heading">
 		        				<h3 class="text-uppercase no-margin clearfix">I am the Title {{item[0]}}<small class="pull-right">(3 - 10 days)</small></h3>
 		        			</div>
 		        			<div class="panel-body">
 		        				<a class="btn btn-carousel"
+		        					data-ng-show="$first"
 		        					data-ng-click="toggleEditable()"><i class="glyphicon glyphicon-pencil inherit"></i></a>
 		        				<div class="overflow-170">
+		        					<h4>{{$index}}</h4>
 		        					{{item}}
 		        				</div>
 		        			</div>

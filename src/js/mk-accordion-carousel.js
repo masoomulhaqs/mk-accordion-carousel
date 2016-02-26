@@ -1,25 +1,30 @@
 var mkACApp = angular.module('mkAccordionCarousel', []);
 
-mkACApp.service('mkAC', [function () {
-  this.currentItem = null;
-  this.currentTarget = null;
-  this.carouselItems = [];
-  this.newCarouselItems = [];
-  this.isEditableCarousel = false;
-  this.solidColors = false;
+mkACApp.service('mkAC', ['$timeout', function ($timeout) {
   var config = {
       'offsetSidePosition': 20,
       'offsetTotalItems': 7,
       'virginityCheckClass': 'carousel-inititalized',
       'itemBaseClass': 'item',
       'itemActiveClass': 'item-active'
-  };
+  }, mk = this;
+
+  this.currentItem = null;
+  this.currentTarget = null;
+  this.carouselItems = [];
+  this.isEditableCarousel = false;
+  this.solidColors = false;
+  this.isStackable = false;
+
   this.initAccordion = function(element){
+    console.log("cool")
     /*** Setting Defaults ***/
     config.parentElem = element.parent();
     config.childElems = config.parentElem.children();
     config.totalItems = config.parentElem.children().length;
     config.parentHeight = config.childElems[0].offsetHeight + (config.offsetSidePosition*(config.totalItems+1));
+
+    config.parentElem.css('height', config.parentHeight+'px');
 
     if(!this.solidColors){
       for(var index=0; index<config.totalItems; index++){
@@ -27,51 +32,73 @@ mkACApp.service('mkAC', [function () {
       }
     }
 
-    config.parentElem.css('height', config.parentHeight+'px');
-
-    this.orderAccordion(element);
+    if(config.totalItems > 1){
+      this.isStackable = true;
+      this.orderAccordion(element);
+    }
   }
 
   this.orderAccordion = function(element){
-      /**** Declaring Variables ****/
-      var childElems = config.parentElem.children();
+      if(this.isStackable){
+        var childElems = config.parentElem.children();
+        config.varibleSidePosition = config.offsetSidePosition*config.totalItems;
 
-      config.varibleSidePosition = config.offsetSidePosition*config.totalItems;
-
-      for(var index=0; index<config.totalItems; index++){
-        childElems.eq(index).css({
-          top: config.varibleSidePosition+'px',
-          right: config.varibleSidePosition+'px',
-          left: config.offsetSidePosition*(config.totalItems+1) - config.varibleSidePosition +'px',
-          cursor: 'pointer',
-          zIndex: 100-index
-        }).removeClass(config.itemActiveClass);
-        config.varibleSidePosition = config.varibleSidePosition - config.offsetSidePosition;
+        for(var index=0; index<config.totalItems; index++){
+          childElems.eq(index).css({
+            top: config.varibleSidePosition+'px',
+            right: config.varibleSidePosition+'px',
+            left: config.offsetSidePosition*(config.totalItems+1) - config.varibleSidePosition +'px',
+            cursor: 'pointer',
+            zIndex: 100-index
+          }).removeClass(config.itemActiveClass);
+          config.varibleSidePosition = config.varibleSidePosition - config.offsetSidePosition;
+        }
+        console.log(element);
+        element.addClass(config.itemActiveClass).css('cursor', 'default');
       }
+  }
 
-      element.addClass(config.itemActiveClass).css('cursor', 'default');
-  } 
+  this.reorderItems = function($event, item){
+    if(this.isStackable && this.currentItem != item){
+      this.currentItem = item;
+      this.currentTarget = $event.currentTarget;
+      var index = this.carouselItems.indexOf(item);
 
-  this.reorderAccordion = function($event){
-    var curr = angular.element($event.currentTarget);
-    curr.parent().prepend(curr);  
-    this.orderAccordion(curr);
+      if(index != -1){
+        this.carouselItems.splice(index,1);
+        this.carouselItems.unshift(item);
+        $timeout(function(){
+          mk.orderAccordion(angular.element(mk.currentTarget));
+        }, 0);
+      }
+    }
+    return this.carouselItems;
+  }
+
+  this.reorderAccordion = function($event, item){
+    if(this.isStackable){
+      this.currentItem = item;
+      this.currentTarget = $event.currentTarget;
+      var curr = angular.element($event.currentTarget);
+      this.reorderItems($event, item);
+      // curr.parent().prepend(curr); 
+      this.orderAccordion(curr);
+    }
   }
 
   this.activeIndex = function(item){
-    var index = this.carouselItems.indexOf(item);
-    return index;
+    return (this.isStackable)?this.carouselItems.indexOf(item):0;
   }
 
   this.toggleEditableCarousel = function(){
-    this.isEditableCarousel = !this.isEditableCarousel;
+    this.isEditableCarousel = (this.isStackable)?!this.isEditableCarousel:false;
     return this.isEditableCarousel;
   }
 }]);
 
 mkACApp.controller('mkCarouselCtrl', function($scope, mkAC){
   $scope.initItems = function(obj){
-    if(angular.isDefined(obj) && obj.length>0){
+    if(angular.isDefined(obj)){
       mkAC.solidColors = $scope.solidColors;
       mkAC.carouselItems = angular.copy(obj);
       mkAC.currentItem = obj[0];
@@ -79,28 +106,16 @@ mkACApp.controller('mkCarouselCtrl', function($scope, mkAC){
   }
 });
 
-mkACApp.controller('mkItemCtrl', function($scope, mkAC){
+mkACApp.controller('mkItemCtrl', function($scope, $timeout, mkAC){
   $scope.initAccordion = function(element){
     mkAC.currentTarget = element;
-    mkAC.newCarouselItems = mkAC.carouselItems;
     mkAC.initAccordion(element);
   }
-  $scope.reorderAccordion = function($event, item){
-    if(mkAC.currentItem != item){
-      mkAC.currentItem = item;
-      mkAC.currentTarget = $event.currentTarget;
-      var index = mkAC.newCarouselItems.indexOf(item);
-      if(index != -1){
-        mkAC.newCarouselItems.splice(index,1);
-        mkAC.newCarouselItems.unshift(item);
-        mkAC.carouselItems = mkAC.newCarouselItems;
-      }
-      mkAC.reorderAccordion($event);
-      mkAC.activeIndex(item);
-    }
+  $scope.reorderItems = function($event, item){
+    return mkAC.reorderItems($event, item);
   }
   $scope.activeIndex = function(item){
-    mkAC.activeIndex(item);
+    return mkAC.activeIndex(item);
   }
   $scope.isActiveItem = function(item){
     return (mkAC.currentItem == item)?true:false;
@@ -117,6 +132,7 @@ mkACApp.directive('mkAccordionCarousel', [function () {
       carouselItems: '=',
       solidColors: "="
     },
+    priority: 1000,
     controller: 'mkCarouselCtrl',
     link: function (scope, element, attrs) {
       scope.initItems(scope.carouselItems);
@@ -127,10 +143,14 @@ mkACApp.directive('mkAccordionCarousel', [function () {
 mkACApp.directive('mkItem', [function () {
    return {
       restrict: 'A',
+      priority: 900,
+      require: '^mkAccordionCarousel',
       controller: 'mkItemCtrl',
       link: function (scope, element, attrs) {
         if(scope.$last) {
           scope.initAccordion(element.parent().children().eq(0));
+        }else if(angular.isUndefined(scope.$last)){
+          scope.initAccordion(element);
         }
       }
    };
